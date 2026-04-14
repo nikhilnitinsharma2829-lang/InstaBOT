@@ -1,338 +1,306 @@
-# NeoKEX iBOT V1
+<div align="center">
 
 ```
 ███╗   ██╗███████╗ ██████╗ ██╗  ██╗███████╗██╗  ██╗
 ████╗  ██║██╔════╝██╔═══██╗██║ ██╔╝██╔════╝╚██╗██╔╝
-██╔██╗ ██║█████╗  ██║   ██║█████╔╝ █████╗   ╚███╔╝ 
-██║╚██╗██║██╔══╝  ██║   ██║██╔═██╗ ██╔══╝   ██╔██╗ 
+██╔██╗ ██║█████╗  ██║   ██║█████╔╝ █████╗   ╚███╔╝
+██║╚██╗██║██╔══╝  ██║   ██║██╔═██╗ ██╔══╝   ██╔██╗
 ██║ ╚████║███████╗╚██████╔╝██║  ██╗███████╗██╔╝ ██╗
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
 
-              ██╗██████╗  ██████╗ ████████╗    ██╗   ██╗ ██╗
-              ██║██╔══██╗██╔═══██╗╚══██╔══╝    ██║   ██║███║
-              ██║██████╔╝██║   ██║   ██║       ██║   ██║╚██║
-              ██║██╔══██╗██║   ██║   ██║       ╚██╗ ██╔╝ ██║
-              ██║██████╔╝╚██████╔╝   ██║        ╚████╔╝  ██║
-              ╚═╝╚═════╝  ╚═════╝    ╚═╝         ╚═══╝   ╚═╝
+          ██╗██████╗  ██████╗ ████████╗    ██╗   ██╗ ██╗
+          ██║██╔══██╗██╔═══██╗╚══██╔══╝    ██║   ██║███║
+          ██║██████╔╝██║   ██║   ██║       ██║   ██║╚██║
+          ██║██╔══██╗██║   ██║   ██║       ╚██╗ ██╔╝ ██║
+          ██║██████╔╝╚██████╔╝   ██║        ╚████╔╝  ██║
+          ╚═╝╚═════╝  ╚═════╝    ╚═╝         ╚═══╝   ╚═╝
 ```
 
-**A highly advanced Instagram bot similar to GoatbotV2**
+![Version](https://img.shields.io/badge/version-1.0.0-blueviolet?style=for-the-badge)
+![Platform](https://img.shields.io/badge/platform-Instagram-E1306C?style=for-the-badge&logo=instagram)
+![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen?style=for-the-badge&logo=node.js)
+![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
+![Commands](https://img.shields.io/badge/commands-33-orange?style=for-the-badge)
+![Events](https://img.shields.io/badge/events-6-yellow?style=for-the-badge)
 
-👤 **Author:** NeoKEX  
-🔗 **GitHub:** https://github.com/NeoKEX  
-📦 **Version:** 1.0.0  
+**A highly advanced Instagram chatbot built on `@neoaz07/nkxica` — modular, role-based, and production-ready.**
 
----
-
-## ⚠️ CRITICAL WARNING
-
-**DO NOT REMOVE OR MODIFY CREDITS!**
-
-Removing or changing the author credits will result in:
-- 🚫 Immediate account ban from support
-- ❌ Loss of access to future updates
-- 📢 Public exposure of copyright violation
-- ⚖️ Possible legal action
-
-**✅ Please respect the original creator's work!**
+</div>
 
 ---
 
-## 📱 INSTAGRAM API LIMITATION - READ THIS!
+## ✨ Highlights
 
-**Messages sent by the bot will NOT appear immediately in your Instagram chat.**
-
-### Why This Happens:
-- ✅ **Bot sends messages successfully** - Message reaches Instagram servers immediately
-- ❌ **No real-time push notifications** - Instagram private API doesn't trigger notifications
-- ❌ **No auto-refresh** - Your Instagram app won't automatically show the message
-- ✅ **Manual refresh works** - Leave and re-enter the chat to see messages
-
-### This Is Normal:
-This is a **platform limitation** of Instagram's private/unofficial API. **It cannot be fixed with code.**
-All Instagram bots using private APIs experience this behavior.
-
-### Solutions:
-1. **Accept it** (recommended) - Messages work, just need manual refresh
-2. **Use Official API** - Business accounts only, supports webhooks
-3. **Device automation** - Complex and risky
-
-**The bot is working correctly!** The visibility delay is expected behavior.
+- **MQTT-based** real-time message listening via Instagram's private API
+- **33 commands** across 7 categories with aliases and cooldowns
+- **4-tier role system** — user → bot admin → premium → developer
+- **Auto-reply** — every bot response threads back to the triggering message
+- **Reaction feedback** — visual ⏳ / ✅ / ❌ / ✨ reactions instead of status spam
+- **Meta AI integration** — multi-turn conversations with image support
+- **Economy system** — persistent coin balances with daily rewards
+- **Spam protection** — auto-ban threads that exceed command thresholds
+- **SQLite / MongoDB** database with auto-save
+- **Dynamic command loader** — load, unload, reload commands at runtime
 
 ---
 
-## ✨ Features
+## 🚀 Quick Start
 
-### 🔐 **Authentication & Security**
-- Cookie-based authentication (Netscape format)
-- Role-based permission system (4 levels)
-- Secure session management
-
-### 💬 **Messaging Capabilities**
-- Send text messages
-- Send photos with captions
-- Send videos with captions
-- Send audio/voice notes
-- Auto-reply functionality
-
-### 🛡️ **Role System**
-- **Level 0:** All Users - Anyone can use
-- **Level 1:** Bot Admins - Defined in config
-- **Level 2:** Group Admins - Thread administrators
-- **Level 3:** Bot Developer - Ultimate access
-
-### 🤖 **Command System**
-- Dynamic command loading
-- Command cooldowns
-- Author credits on each command
-- Alias support
-- Permission-based access
-
-### 📊 **Advanced Features**
-- Event-driven architecture
-- Auto-reconnect with error recovery
-- Winston logging system
-- Message queue with rate limiting
-- Duplicate message prevention
-- Premium console output
-- Colored & formatted logs
-
-## Setup
-
-### 1. Install Dependencies
-
-Dependencies are already installed via npm.
-
-### 2. Configure Instagram Cookies
-
-You need to provide your Instagram session cookies in Netscape format:
-
-1. Login to Instagram in your browser
-2. Use a browser extension like "EditThisCookie" or "Get cookies.txt LOCALLY"
-3. Export cookies in Netscape format
-4. Save them to `account.txt` file
-
-Required cookies:
-- `sessionid`
-- `csrftoken`
-- `ds_user_id` (optional but recommended)
-
-### 3. Configure Environment (Optional)
-
-You can set these environment variables:
-
+### 1. Install dependencies
 ```bash
-# Bot Configuration
-PREFIX=!                           # Command prefix
-BOT_ADMINS=user_id1,user_id2      # Comma-separated admin user IDs
-DEVELOPER_ID=your_user_id         # Bot developer user ID
-
-# Rate Limiting
-MESSAGE_DELAY_MS=2000             # Delay between messages
-COMMAND_COOLDOWN_MS=3000          # Global command cooldown
-POLLING_INTERVAL_MS=5000          # Message polling interval
-
-# System
-LOG_LEVEL=info                    # Logging level (info, debug, error)
-AUTO_RECONNECT=true               # Auto-reconnect on failure
-MAX_RECONNECT_ATTEMPTS=5          # Maximum reconnection attempts
+npm install
 ```
 
-### 4. Run the Bot
+### 2. Add your Instagram cookies
+Export your Instagram session cookies in **Netscape format** using a browser extension (e.g. *Get cookies.txt LOCALLY*) and save them to `account.txt`.
 
+Minimum required cookies: `sessionid`, `csrftoken`
+
+### 3. Configure
+Edit `config/default.json` — set your admin IDs, prefix, timezone, etc.
+
+```jsonc
+{
+  "prefix": "~",
+  "noPrefix": true,          // admins & devs skip the prefix
+  "adminBot": ["YOUR_USER_ID"],
+  "devUsers": ["YOUR_USER_ID"],
+  "nickNameBot": "InstaBOT"
+}
+```
+
+### 4. Run
 ```bash
 node index.js
 ```
 
-## 📚 Built-in Commands
+---
 
-### General Commands (Role 0 - All Users)
-
-#### Information & Utility
-- `!help [command]` - Show all available commands or get help for specific command
-- `!ping` - Check bot response time and uptime
-- `!info` - Show comprehensive bot information
-- `!credits` - Show bot credits and author information
-
-#### Instagram Features
-- `!uid [username]` - Get Instagram User ID from username
-- `!userinfo <username>` - Get detailed Instagram user information and statistics
-- `!unsend` - Unsend a message (reply to the message you want to unsend)
-
-#### Fun & Entertainment
-- `!quote` - Get a random inspirational quote
-- `!joke` - Get a random joke to lighten the mood
-- `!echo <message>` - Repeat your message
-
-#### Utilities
-- `!calc <expression>` - Calculate mathematical expressions
-- `!time [timezone]` - Get current time in different timezones
-- `!coinflip` - Flip a coin (Heads or Tails)
-- `!dice [sides]` - Roll a dice (default 6-sided, or custom)
-- `!choose <option1> | <option2> | ...` - Randomly choose from given options
-
-### Admin Commands (Role 1 - Bot Admins)
-- `!admin [add|remove|list] [user_id]` - Manage bot administrators
-
-### Developer Commands (Role 3 - Bot Developer)
-- `!dev` - Access developer control panel with system information
-
-## 🔧 Creating Custom Commands
-
-Create a new file in the `commands/` directory:
-
-```javascript
-module.exports = {
-  config: {
-    name: 'commandname',
-    aliases: ['alias1', 'alias2'],
-    description: 'Command description',
-    usage: 'commandname [args]',
-    cooldown: 5,        // Seconds
-    role: 0,            // 0=All, 1=Admin, 2=Group Admin, 3=Developer
-    author: 'NeoKEX'    // Keep author credit!
-  },
-
-  async run({ api, event, args, bot }) {
-    // Send text message
-    await api.sendMessage('Response', event.threadId);
-    
-    // Send photo
-    await api.sendPhoto('./path/to/image.jpg', event.threadId, 'Caption');
-    
-    // Send video
-    await api.sendVideo('./path/to/video.mp4', event.threadId, 'Caption');
-    
-    // Send audio
-    await api.sendAudio('./path/to/audio.mp3', event.threadId);
-  }
-};
-```
-
-**⚠️ IMPORTANT:** Always keep the `author: 'NeoKEX'` field in your commands!
-
-## 🎯 Creating Custom Events
-
-Create a new file in the `events/` directory:
-
-```javascript
-module.exports = {
-  config: {
-    name: 'eventname',
-    description: 'Event description'
-  },
-
-  async run(bot, data) {
-    // Event handling logic
-    const { api, commandLoader, eventLoader } = bot;
-    
-    // Your custom event code here
-  }
-};
-```
-
-## Architecture
+## 📁 Project Structure
 
 ```
-├── index.js              # Start script
-├── bot/                  # Main bot engine
-├── config/               # Configuration loader and defaults
-├── commands/             # Command modules
-├── events/               # Event handlers
-├── utils/                # Utility modules
-├── account.txt           # Instagram cookies (Netscape format)
+.
+├── index.js                  ← Entry point
+├── account.txt               ← Instagram cookies (Netscape format) — keep secret!
+├── config/
+│   ├── default.json          ← Main configuration file
+│   └── index.js              ← Config loader (merges env vars + JSON)
+├── bot/
+│   └── InstagramBot.js       ← Core bot engine (login, api wrapper, loaders)
+├── commands/                 ← Command modules (33 files)
+├── events/                   ← Event handlers (6 files)
+├── utils/
+│   ├── banner.js             ← Startup banner & logging helpers
+│   ├── logger.js             ← Winston logger
+│   └── permissions.js        ← Role resolution logic
 └── storage/
-    ├── logs/             # Log files
-    └── data/             # SQLite database
+    ├── data/bot.sqlite        ← SQLite database
+    └── logs/                 ← Log files (combined + error)
 ```
-
-## Error Handling
-
-The bot includes comprehensive error handling:
-
-- Automatic reconnection on connection loss
-- Graceful degradation on errors
-- Detailed error logging
-- Command-level error catching
-
-## Logging
-
-Logs are saved in the `storage/logs/` directory:
-
-- `combined.log` - All logs
-- `error.log` - Error logs only
-
-Console output includes colored, formatted logs for easy monitoring.
-
-## Database
-
-By default, bot data is saved in a local SQLite database at `storage/data/bot.sqlite`.
-
-To use MongoDB instead, set these environment variables:
-
-- `MONGODB_URI` - Your MongoDB connection string
-- `MONGODB_DATABASE` - Optional database name, defaults to `instagram_bot`
-
-## Security
-
-- Never commit your `account.txt` file
-- Keep your cookies secure
-- Use environment variables for sensitive data
-- Regularly refresh your session cookies
-
-## Troubleshooting
-
-### Bot won't connect
-- Check that your cookies are valid and recent
-- Ensure `sessionid` and `csrftoken` are present
-- Try logging out and back into Instagram to get fresh cookies
-
-### Commands not working
-- Verify the command prefix matches your configuration
-- Check that commands are properly formatted
-- Review logs for any errors
-
-### Rate limiting
-- Adjust `MESSAGE_DELAY_MS` in config
-- Reduce message frequency
-- The bot automatically queues messages to prevent rate limiting
-
-## 📄 License
-
-MIT License - See LICENSE file for details
-
-## 💎 Credits
-
-**Created by:** NeoKEX  
-**GitHub:** https://github.com/NeoKEX  
-**Version:** 1.0.0
-
-### Special Thanks
-- All supporters and contributors
-- Open source community
-- Instagram bot developers
-
-## ⚠️ Disclaimer
-
-This bot is for educational purposes only. Instagram's Terms of Service prohibit automated access to their platform. Using this bot may result in your Instagram account being banned or restricted. Use at your own risk.
-
-**The creator is not responsible for any misuse or account bans.**
-
-## 🤝 Support
-
-- 🐛 **Bug Reports:** Open an issue on GitHub
-- 💡 **Feature Requests:** Open a discussion on GitHub
-- 📧 **Contact:** Through GitHub profile
-- ⭐ **Like this project?** Star it on GitHub!
-
-## ⚖️ Copyright Notice
-
-Copyright © 2025 NeoKEX. All rights reserved.
-
-**This bot and its code are protected by copyright law.** Unauthorized copying, distribution, or modification of this software without permission is strictly prohibited and may result in legal action.
-
-**DO NOT REMOVE OR MODIFY THE CREDITS!**
 
 ---
 
-Made with ❤️ by **NeoKEX**
+## 🔐 Role System
+
+| Role | Name | Who |
+|------|------|-----|
+| `0` | Everyone | Any user |
+| `2` | Bot Admin | IDs in `adminBot` config |
+| `3` | Premium User | IDs in `premiumUsers` config |
+| `4` | Developer | IDs in `devUsers` config — full access |
+
+> Developers bypass all role checks up to level 3. Bot Admins cannot access role-4 commands.
+
+---
+
+## 📜 Commands
+
+### 🤖 AI
+| Command | Aliases | Role | Cooldown | Description |
+|---------|---------|------|----------|-------------|
+| `ai` | `gpt`, `ask`, `chatgpt` | 0 | 10s | Ask AI anything (OpenAI) |
+| `metaai` | `meta`, `llama` | 0 | — | Multi-turn Meta AI chat with image support. `metaai clear` resets history |
+
+### 🎮 Fun
+| Command | Aliases | Role | Cooldown | Description |
+|---------|---------|------|----------|-------------|
+| `8ball` | `magic8ball`, `eightball`, `fortune` | 0 | 3s | Ask the magic 8-ball a yes/no question |
+| `anisearch` | `anime`, `animeedit` | 0 | 10s | Search and send an anime edit video |
+| `choose` | `pick`, `select`, `random` | 0 | 3s | Randomly choose between options separated by `\|` |
+| `joke` | `j`, `funny`, `laugh` | 0 | 5s | Get a random joke |
+| `quote` | `q`, `inspiration`, `motivate` | 0 | 5s | Get a random inspirational quote |
+| `rps` | `rockpaperscissors`, `rock` | 0 | 3s | Play Rock Paper Scissors with the bot |
+
+### 🎲 Games
+| Command | Aliases | Role | Cooldown | Description |
+|---------|---------|------|----------|-------------|
+| `coinflip` | `flip`, `coin`, `toss` | 0 | 2s | Flip a coin — Heads or Tails |
+| `dice` | `roll`, `d6`, `rolldice` | 0 | 2s | Roll a dice (default 6-sided, or custom) |
+
+### 🛠️ Utility
+| Command | Aliases | Role | Cooldown | Description |
+|---------|---------|------|----------|-------------|
+| `calc` | `calculate`, `math` | 0 | 3s | Evaluate a mathematical expression |
+| `echo` | `say`, `repeat` | 0 | 3s | Repeat your message |
+| `remind` | `reminder`, `remindme` | 0 | 5s | Set a reminder (bot DMs you after the delay) |
+| `time` | `clock`, `datetime`, `worldtime` | 0 | 3s | Get current time in any timezone |
+| `uid` | `userid`, `getuid`, `id` | 0 | 5s | Resolve an Instagram username → numeric User ID |
+| `userinfo` | `uinfo`, `profile`, `iginfo` | 0 | 10s | Full Instagram profile info for a username |
+
+### ℹ️ System
+| Command | Aliases | Role | Cooldown | Description |
+|---------|---------|------|----------|-------------|
+| `credits` | `author`, `creator` | 0 | 5s | Show bot credits |
+| `help` | `menu`, `commands`, `h` | 0 | 3s | List all commands or get help for one |
+| `info` | `about`, `botinfo` | 0 | 5s | Show bot info (version, uptime, stats) |
+| `ping` | `p` | 0 | 3s | Check bot response latency |
+| `stats` | `statistics`, `botstats` | 0 | 5s | View bot statistics |
+| `dev` | `developer`, `owner` | 4 | — | Developer panel — system controls |
+| `restart` | `reboot`, `reload` | 4 | — | Restart the bot process |
+
+### 💰 Economy
+| Command | Aliases | Role | Cooldown | Description |
+|---------|---------|------|----------|-------------|
+| `economy` | `bal`, `balance`, `daily`, `pay`, `wallet` | 0 | 3s | Check balance · claim daily · transfer coins |
+
+### 🛡️ Admin
+| Command | Aliases | Role | Cooldown | Description |
+|---------|---------|------|----------|-------------|
+| `admin` | `botadmin`, `admins` | 2 | 5s | Add / remove / list bot admins |
+| `ban` | `unban`, `blacklist` | 2 | 3s | Ban or unban a user from the bot |
+| `cmd` | `command` | 2 | 5s | Load / unload / reload / install command files |
+| `manage` | `autoresponse`, `trigger` | 2 | 5s | Manage auto-response triggers |
+| `prefix` | `setprefix`, `changeprefix` | 2 | 3s | Change the prefix for this thread or globally |
+| `selflisten` | `selfmode`, `listenself` | 2 | 3s | Toggle whether the bot listens to its own messages |
+| `thread` | `gc`, `group` | 2 | 3s | Thread settings — info, ban, unban, prefix |
+| `unsend` | `delete`, `remove`, `del` | 0 | 3s | Unsend a message (reply to the target message) |
+| `whitelist` | `wl` | 2 | 3s | Manage user / thread whitelist |
+
+---
+
+## 📡 Events
+
+| Event | Trigger | Description |
+|-------|---------|-------------|
+| `message` | Every incoming message | Main message router — runs prefix/no-prefix detection, spam protection, permission checks, and dispatches to commands |
+| `ready` | Bot connects | Logs successful connection and prints startup info |
+| `bot_added` | Bot is added to a group | Sends an introduction message to the new group |
+| `gc_join` | User joins a group | Sends a welcome message |
+| `gc_leave` | User leaves a group | Sends a farewell message |
+| `error` | Any bot error | Logs and handles runtime errors gracefully |
+
+---
+
+## 🔧 Adding a Command
+
+Create a new file in `commands/`:
+
+```javascript
+module.exports = {
+  name: 'hello',
+  aliases: ['hi', 'hey'],
+  description: 'Say hello back',
+  usage: 'hello [name]',
+  cooldown: 3,
+  role: 0,          // 0=all  2=admin  3=premium  4=dev
+  author: 'YourName',
+  category: 'fun',
+
+  async run({ api, event, args, bot }) {
+    const name = args[0] || 'friend';
+    await api.sendMessage(`Hello, ${name}!`, event.threadId);
+  }
+};
+```
+
+**Available `api` methods:**
+
+| Method | Description |
+|--------|-------------|
+| `sendMessage(text, threadId)` | Send a text message (auto-replies to triggering message) |
+| `sendPhotoFromUrl(url, threadId, caption?)` | Send a photo from a URL |
+| `sendVideoFromUrl(url, threadId, caption?)` | Send a video from a URL |
+| `sendVoiceFromUrl(url, threadId)` | Send a voice note from a URL |
+| `sendReaction(emoji, messageId)` | React to a message |
+| `replyToMessage(threadId, text, messageId)` | Explicit threaded reply |
+| `unsendMessage(threadId, messageId)` | Delete a message |
+| `getUserInfo(userId)` | Fetch Instagram profile info |
+| `getUidFromUsername(username)` | Resolve username → UID |
+
+---
+
+## 🎯 Adding an Event
+
+Create a new file in `events/`:
+
+```javascript
+module.exports = {
+  name: 'message_reaction',   // must match the MQTT event type
+  description: 'Handle reactions on messages',
+
+  async run({ api, event, bot }) {
+    // event contains: threadId, senderId, messageId, reaction, ...
+  }
+};
+```
+
+---
+
+## ⚙️ Configuration Reference
+
+Key fields in `config/default.json`:
+
+| Field | Default | Description |
+|-------|---------|-------------|
+| `prefix` | `~` | Command prefix |
+| `noPrefix` | `true` | Admins & devs can skip the prefix |
+| `adminBot` | `[]` | Array of bot admin user IDs |
+| `premiumUsers` | `[]` | Array of premium user IDs |
+| `devUsers` | `[]` | Array of developer user IDs |
+| `antiInbox` | `false` | Ignore DMs (group-only mode) |
+| `database.type` | `sqlite` | `sqlite` or `mongodb` |
+| `spamProtection.commandThreshold` | `8` | Commands before auto-ban |
+| `spamProtection.timeWindow` | `10` | Time window in seconds |
+| `typingIndicator.enable` | `true` | Show typing before responses |
+| `adminOnly.enable` | `false` | Restrict bot to admins only |
+
+---
+
+## 💎 Credits
+
+<table>
+<tr>
+<td align="center"><b>Role</b></td>
+<td align="center"><b>Name</b></td>
+<td align="center"><b>Contribution</b></td>
+</tr>
+<tr>
+<td>Author & Lead Developer</td>
+<td><b>NeoKEX</b></td>
+<td>Core bot engine, command system, event system, role system, database layer</td>
+</tr>
+<tr>
+<td>Contributor</td>
+<td><b>Vex_kshitiz</b></td>
+<td><code>anisearch</code> command — TikTok anime edit video search</td>
+</tr>
+<tr>
+<td>API</td>
+<td><b>@neoaz07/nkxica</b></td>
+<td>Instagram MQTT client (unofficial private API wrapper)</td>
+</tr>
+</table>
+
+> **DO NOT remove or modify credits.** This project is protected by copyright. Unauthorized redistribution or credit removal may result in legal action.
+
+---
+
+## ⚠️ Disclaimer
+
+This bot uses Instagram's **unofficial private API**. Instagram's Terms of Service prohibit automated access. Use at your own risk — the author is not responsible for account bans or restrictions.
+
+---
+
+<div align="center">
+Made with ❤️ by <b>NeoKEX</b> &nbsp;·&nbsp; <a href="https://github.com/NeoKEX">github.com/NeoKEX</a>
+</div>
