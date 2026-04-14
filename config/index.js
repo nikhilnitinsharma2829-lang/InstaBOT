@@ -15,7 +15,16 @@ try {
   console.error('Error loading config/default.json:', error.message);
 }
 
+const pkg = (() => {
+  try { return require('../package.json'); } catch (_) { return {}; }
+})();
+
 module.exports = {
+  // ── Bot identity ──────────────────────────────────────────────────────
+  BOT_NAME:    c.nickNameBot || 'InstaBOT',
+  BOT_VERSION: pkg.version   || '1.0.0',
+  AUTHOR:      pkg.author    || 'NeoKEX',
+
   // ── Account ──────────────────────────────────────────────────────────
   ACCOUNT_EMAIL:    process.env.ACCOUNT_EMAIL    || c.instagramAccount?.email    || '',
   ACCOUNT_PASSWORD: process.env.ACCOUNT_PASSWORD || c.instagramAccount?.password || '',
