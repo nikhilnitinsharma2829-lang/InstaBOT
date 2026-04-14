@@ -54,7 +54,7 @@
     "autoRefreshThreadInfoFirstTime": true,
     "notes": "(1) type selects 'sqlite' or 'mongodb'. To use MongoDB, paste your connection URI into uriMongodb and set mongodbDatabase to your preferred DB name. (2) autoSave periodically flushes in-memory state to disk/MongoDB every saveIntervalMinutes minutes. (3) autoSyncWhenStart re-syncs data on startup. (4) autoRefreshThreadInfoFirstTime refreshes thread info on first message."
   },
-  "messageDelayMs": 500,
+  "messageDelayMs": 100,
   "timeZone": "Asia/Dhaka",
   "dashBoard": {
     "enable": true,
@@ -138,7 +138,7 @@
   },
   "typingIndicator": {
     "enable": true,
-    "duration": 2000,
+    "duration": 500,
     "notes": "Shows typing indicator before sending messages. duration is in milliseconds (1000 = 1 second). Set enable to false to disable."
   },
   "optionsFca": {
