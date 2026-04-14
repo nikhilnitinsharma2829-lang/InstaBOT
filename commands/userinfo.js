@@ -1,14 +1,16 @@
 module.exports = {
-  name: 'userinfo',
-  aliases: ['uinfo', 'profile', 'iginfo'],
-  description: 'Get detailed Instagram user information',
-  usage: 'userinfo <username or UID>',
-  cooldown: 10,
-  role: 0,
-  author: 'NeoKEX',
-  category: 'utility',
+  config: {
+    name: 'userinfo',
+    aliases: ['uinfo', 'profile', 'iginfo'],
+    description: 'Get detailed Instagram user information',
+    usage: 'userinfo <username or UID>',
+    cooldown: 10,
+    role: 0,
+    author: 'NeoKEX',
+    category: 'utility'
+  },
 
-  async run({ api, event, args, bot, logger }) {
+  async run({ api, event, args, logger }) {
     if (args.length === 0) {
       return api.sendMessage(
         '❌ Please provide a username or User ID!\n\n' +
@@ -27,13 +29,9 @@ module.exports = {
     const isUid = /^\d+$/.test(input);
 
     try {
-      let userInfo;
-
-      if (isUid) {
-        userInfo = await bot.ig.getUserInfo(input);
-      } else {
-        userInfo = await bot.ig.getUserInfoByUsername(input);
-      }
+      const userInfo = isUid
+        ? await api.getUserInfo(input)
+        : await api.getUserInfoByUsername(input);
 
       if (!userInfo) {
         return api.sendMessage(
@@ -48,7 +46,7 @@ module.exports = {
       }
 
       const userId    = userInfo.userID || userInfo.userId || input;
-      const username  = userInfo.username || (isUid ? input : input);
+      const username  = userInfo.username || input;
       const fullName  = userInfo.fullName || 'N/A';
       const bio       = userInfo.bio || 'No bio';
       const isPrivate = userInfo.isPrivate ? '🔒 Private' : '🔓 Public';

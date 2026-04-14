@@ -1,14 +1,16 @@
 const axios = require('axios');
 
 module.exports = {
-  name: 'alldl',
-  aliases: ['fbdl', 'igdl', 'ttdl', 'ytdl', 'dl'],
-  description: 'Download videos from Facebook, Instagram, TikTok, YouTube via link',
-  usage: 'alldl <url>',
-  cooldown: 10,
-  role: 0,
-  author: 'Neoaz',
-  category: 'media',
+  config: {
+    name: 'alldl',
+    aliases: ['fbdl', 'igdl', 'ttdl', 'ytdl', 'dl'],
+    description: 'Download videos from Facebook, Instagram, TikTok, YouTube via link',
+    usage: 'alldl <url>',
+    cooldown: 10,
+    role: 0,
+    author: 'Neoaz',
+    category: 'media'
+  },
 
   async run({ api, event, args, logger }) {
     let url = args[0];

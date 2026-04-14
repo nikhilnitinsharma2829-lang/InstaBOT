@@ -1,14 +1,16 @@
 module.exports = {
-  name: 'uid',
-  aliases: ['userid', 'getuid', 'id'],
-  description: 'Get Instagram User ID from username',
-  usage: 'uid [username or UID]',
-  cooldown: 5,
-  role: 0,
-  author: 'NeoKEX',
-  category: 'utility',
+  config: {
+    name: 'uid',
+    aliases: ['userid', 'getuid', 'id'],
+    description: 'Get Instagram User ID from username',
+    usage: 'uid [username or UID]',
+    cooldown: 5,
+    role: 0,
+    author: 'NeoKEX',
+    category: 'utility'
+  },
 
-  async run({ api, event, args, bot, logger }) {
+  async run({ api, event, args, logger }) {
     if (args.length === 0) {
       return api.sendMessage(String(event.senderID), event.threadId);
     }
@@ -19,7 +21,6 @@ module.exports = {
       return api.sendMessage('❌ Please provide a valid username or User ID!\n\nUsage: uid <username or UID>', event.threadId);
     }
 
-    // Already a UID — return it immediately
     if (/^\d+$/.test(input)) {
       return api.sendMessage(input, event.threadId);
     }
