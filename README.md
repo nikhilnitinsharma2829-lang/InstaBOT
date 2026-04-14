@@ -87,17 +87,19 @@ Developers bypass all role checks up to level 3. Bot Admins cannot access role-4
 
 ## Creating a Command
 
-Create a new `.js` file inside the `commands/` directory. The filename does not matter — the command is identified by its `name` property. It will be auto-loaded on the next bot start, or you can reload it at runtime using the `cmd` admin command.
+Create a new `.js` file inside the `commands/` directory. The filename does not matter — the command is identified by its `config.name` property. It will be auto-loaded on the next bot start, or you can reload it at runtime using the `cmd` admin command.
 
 ### Minimal example
 
 ```javascript
 module.exports = {
-  name: 'hello',
-  description: 'Say hello back',
+  config: {
+    name: 'hello',
+    description: 'Say hello back'
+  },
 
   async run({ api, event, args, bot }) {
-    await api.sendMessage(`Hello!`, event.threadID);
+    await api.sendMessage(`Hello!`, event.threadId);
   }
 };
 ```
@@ -106,17 +108,18 @@ module.exports = {
 
 ```javascript
 module.exports = {
-  // Required
-  name: 'hello',               // Primary command name (must be unique)
-  description: 'Say hello',    // Short description shown in help
+  config: {
+    name: 'hello',               // Primary command name (must be unique)
+    description: 'Say hello',    // Short description shown in help
 
-  // Optional
-  aliases: ['hi', 'hey'],      // Alternative names that trigger this command
-  usage: 'hello [name]',       // Usage hint shown in help
-  cooldown: 3,                 // Cooldown in seconds per user (default: 0)
-  role: 0,                     // Minimum role required: 0=all  2=admin  3=premium  4=dev
-  category: 'fun',             // Category label (used for grouping in help)
-  author: 'YourName',          // Optional author tag
+    // Optional
+    aliases: ['hi', 'hey'],      // Alternative names that trigger this command
+    usage: 'hello [name]',       // Usage hint shown in help
+    cooldown: 3,                 // Cooldown in seconds per user (default: 0)
+    role: 0,                     // Minimum role required: 0=all  2=admin  3=premium  4=dev
+    category: 'fun',             // Category label (used for grouping in help)
+    author: 'YourName'           // Optional author tag
+  },
 
   async run({ api, event, args, bot }) {
     // args    — array of words after the command name
@@ -125,7 +128,7 @@ module.exports = {
     // bot     — the InstagramBot instance (access bot.userID, bot.ig, etc.)
 
     const name = args[0] || 'friend';
-    await api.sendMessage(`Hello, ${name}!`, event.threadID);
+    await api.sendMessage(`Hello, ${name}!`, event.threadId);
   }
 };
 ```
@@ -134,9 +137,9 @@ module.exports = {
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `event.threadID` | string | Thread (group or DM) ID |
+| `event.threadId` | string | Thread (group or DM) ID |
 | `event.senderID` | string | Sender's user ID |
-| `event.messageID` | string | Message ID |
+| `event.messageId` | string | Message ID |
 | `event.body` | string | Full message text |
 | `event.args` | string[] | Words split from body after prefix+name |
 | `event.isGroup` | boolean | Whether the message came from a group |
@@ -175,7 +178,7 @@ async run({ api, event, args, bot }) {
   const role = getRole(event.senderID);
   // role: 0 = user, 2 = admin, 3 = premium, 4 = dev
   if (role < 2) {
-    return api.sendMessage('Admins only!', event.threadID);
+    return api.sendMessage('Admins only!', event.threadId);
   }
 }
 ```
@@ -206,14 +209,14 @@ A common pattern used across all built-in commands:
 ```javascript
 async run({ api, event, args, bot }) {
   // Show "processing" reaction
-  await api.sendReaction('⏳', event.messageID);
+  await api.sendReaction('⏳', event.messageId);
 
   try {
     // ... do work ...
-    await api.sendMessage('Done!', event.threadID);
-    await api.sendReaction('✅', event.messageID);
+    await api.sendMessage('Done!', event.threadId);
+    await api.sendReaction('✅', event.messageId);
   } catch (err) {
-    await api.sendReaction('❌', event.messageID);
+    await api.sendReaction('❌', event.messageId);
   }
 }
 ```
@@ -228,8 +231,10 @@ Create a new `.js` file inside the `events/` directory. The `name` field must ma
 
 ```javascript
 module.exports = {
-  name: 'message_reaction',    // Must match the MQTT event type (see list below)
-  description: 'Handle message reactions',
+  config: {
+    name: 'message_reaction',    // Must match the MQTT event type (see list below)
+    description: 'Handle message reactions'
+  },
 
   async run({ api, event, bot }) {
     // api   — same wrapped API available in commands
@@ -256,14 +261,16 @@ module.exports = {
 
 ```javascript
 module.exports = {
-  name: 'bot_added',
-  description: 'Send intro when bot joins a group',
+  config: {
+    name: 'bot_added',
+    description: 'Send intro when bot joins a group'
+  },
 
   async run({ api, event, bot }) {
-    const { threadID } = event;
+    const { threadId } = event;
     await api.sendMessage(
       `Hi everyone! I'm ${bot.username}. Type ~help to see what I can do.`,
-      threadID
+      threadId
     );
   }
 };
@@ -273,12 +280,14 @@ module.exports = {
 
 ```javascript
 module.exports = {
-  name: 'gc_leave',
-  description: 'Farewell message',
+  config: {
+    name: 'gc_leave',
+    description: 'Farewell message'
+  },
 
   async run({ api, event, bot }) {
-    const { threadID, leftUserId } = event;
-    await api.sendMessage(`User ${leftUserId} has left the chat. Goodbye!`, threadID);
+    const { threadId, leftUserId } = event;
+    await api.sendMessage(`User ${leftUserId} has left the chat. Goodbye!`, threadId);
   }
 };
 ```
